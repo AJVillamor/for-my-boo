@@ -29,7 +29,7 @@ function showPreviousMessage(previousContainerId) {
 function confirmAttendance(response) {
   if (response === "yes") {
     alert(
-      "Thank you for accepting the invitation! Looking forward to our special day together."
+      "Yay! See you sa 14 mwa mwa chup chup"
     );
   } else if (response === "no") {
     alert(
