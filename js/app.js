@@ -1,47 +1,120 @@
-let currentStep = 1;
-let noClickCount = 0;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>FOR MY BOO</title>
+  </head>
+  <body>
+    <div class="gif-1">
+      <div
+        style="width: 100%; height: 0; padding-bottom: 99%; position: relative"
+      >
+        <iframe
+          src="https://giphy.com/embed/lYV7UP5smAzkiZkXgi"
+          width="100%"
+          height="100%"
+          style="position: absolute"
+          frameborder="0"
+          class="giphy-embed"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
 
-function showNextMessage(nextContainerId) {
-  const currentContainer = document.getElementById(
-    `invitation-container-${currentStep}`
-  );
-  currentContainer.classList.add("hidden");
+    <div class="invitation-container" id="invitation-container-1">
+      <div class="left-div"></div>
+      <div class="center-div">
+        <h1>Hello boo</h1>
+      </div>
+      <div class="right-div">
+        <button
+          class="state-btn"
+          onclick="showNextMessage('invitation-container-2')"
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
 
-  if (currentStep < 3) {
-    currentStep++;
-    const nextContainer = document.getElementById(nextContainerId);
-    nextContainer.classList.remove("hidden");
-  }
-}
+    <div class="invitation-container hidden" id="invitation-container-2">
+      <div class="left-div">
+        <button
+          class="state-btn"
+          id="previous"
+          onclick="showPreviousMessage('invitation-container-1')"
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+      <div class="center-div">
+        <h1>I just wanna ask you</h1>
+      </div>
+      <div class="right-div">
+        <button
+          class="state-btn"
+          onclick="showNextMessage('invitation-container-3')"
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
 
-function showPreviousMessage(previousContainerId) {
-  if (currentStep > 1) {
-    const currentContainer = document.getElementById(
-      `invitation-container-${currentStep}`
-    );
-    currentContainer.classList.add("hidden");
+    <div class="invitation-container hidden" id="invitation-container-3">
+      <div class="left-div">
+        <button
+          class="state-btn"
+          id="previous"
+          onclick="showPreviousMessage('invitation-container-2')"
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+      <div class="center-div">
+        <h1>Would you be my Valentine's date?</h1>
+        <div class="button-container">
+          <button
+            class="choices-btn"
+            id="yes"
+            onclick="confirmAttendance('yes')"
+          >
+            Yes
+          </button>
+          <button
+            class="choices-btn"
+            id="no"
+          >
+            No
+          </button>
+        </div>
+      </div>
+      <div class="right-div"></div>
+    </div>
 
-    currentStep--;
-    const previousContainer = document.getElementById(previousContainerId);
-    previousContainer.classList.remove("hidden");
-  }
-}
+    <div class="gif-1" id="sticker-2">
+      <div
+        style="width: 100%; height: 0; padding-bottom: 99%; position: relative"
+      >
+        <iframe
+          src="https://giphy.com/embed/lYV7UP5smAzkiZkXgi"
+          width="100%"
+          height="100%"
+          style="position: absolute"
+          frameborder="0"
+          class="giphy-embed"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
 
-function confirmAttendance(response) {
-  if (response === "no") {
-    noClickCount++;
-
-    const yesButton = document.getElementById("yes-btn");
-    const scale = 1 + noClickCount * 0.25; // increase size gradually
-    yesButton.style.transform = `scale(${scale})`;
-    yesButton.style.transition = "transform 0.3s ease";
-
-    return;
-  }
-
-  if (response === "yes") {
-    alert(
-      "Thank you for accepting the invitation! Looking forward to our special day together."
-    );
-  }
-}
+    <script src="js/app.js"></script>
+  </body>
+</html>
