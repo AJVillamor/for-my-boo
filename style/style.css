@@ -74,8 +74,11 @@ button {
   font-size: x-large;
 }
 
+button#yes:hover {
+  background-color: red;
+}
 button#no:hover {
-  order: -1;
+  background-color: transparent;
 }
 
 button#next {
