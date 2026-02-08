@@ -1,4 +1,5 @@
 let currentStep = 1;
+let noClickCount = 0;
 
 function showNextMessage(nextContainerId) {
   const currentContainer = document.getElementById(
@@ -27,13 +28,20 @@ function showPreviousMessage(previousContainerId) {
 }
 
 function confirmAttendance(response) {
+  if (response === "no") {
+    noClickCount++;
+
+    const yesButton = document.getElementById("yes-btn");
+    const scale = 1 + noClickCount * 0.25; // increase size gradually
+    yesButton.style.transform = `scale(${scale})`;
+    yesButton.style.transition = "transform 0.3s ease";
+
+    return;
+  }
+
   if (response === "yes") {
     alert(
       "Thank you for accepting the invitation! Looking forward to our special day together."
-    );
-  } else if (response === "no") {
-    alert(
-      "I understand. If you change your mind, feel free to reach out. Happy Valentine's Day!"
     );
   }
 }
